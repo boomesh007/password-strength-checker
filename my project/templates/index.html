@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Password Strength Checker</title>
+  <style>
+    :root {
+      --primary: #2575fc;
+      --primary-dark: #1a5ed0;
+      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: url('https://t4.ftcdn.net/jpg/11/87/54/77/240_F_1187547788_N5allIU9mCukwo9K637FWGfDOgmRMylg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      backdrop-filter: blur(5px);
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 40px 30px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      animation: fadeIn 0.7s ease-in-out;
+      color: #fff;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    input[type="text"] {
+      padding: 14px;
+      font-size: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      color: #fff;
+      backdrop-filter: blur(10px);
+    }
+
+    input[type="text"]::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    input[type="submit"] {
+      background-color: var(--primary);
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .result {
+      margin-top: 25px;
+      font-size: 18px;
+    }
+
+    .strength {
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 20px;
+      background-color: rgba(37, 117, 252, 0.3);
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🔐 Password Strength Checker</h2>
+    <form method="post">
+      <input type="text" name="password" placeholder="Enter your password" required />
+      <input type="submit" value="Check Strength" />
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+      Predicted Strength: <span class="strength">{{ prediction }}</span>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
